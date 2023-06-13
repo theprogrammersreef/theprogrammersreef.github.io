@@ -1,12 +1,29 @@
+/* 
+colors:
+#F25C54; coral
+#00A8BB; blue
+*/
+
+
 .navbar, #navbarHeader {
     background-color: #00A8BB;
 }
 
-#section-intro h1 {
-    color: #F25C54;
+.font-league-spartan {
+    font-family: 'League Spartan';
 }
 
-#section-intro p {
+.font-sanchez {
+    font-family: 'Sanchez';
+}
+
+.logo-banner-div {
+    width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+.logo-banner-div h4 {
     color: #00A8BB;
 }
 
