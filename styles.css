@@ -4,9 +4,23 @@ colors:
 #00A8BB; blue
 */
 
-
+/* GENERAL */
 .navbar, #navbarHeader {
     background-color: #00A8BB;
+}
+
+#navbarHeader p, #navbarHeader ul, footer p {
+    font-size: medium;
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-link:hover {
+    color: white;
+    text-decoration: underline;
 }
 
 .font-league-spartan {
@@ -17,6 +31,33 @@ colors:
     font-family: 'Sanchez';
 }
 
+.blue-text {
+    color: #00A8BB;
+}
+
+.coral-text {
+    color: #F25C54;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.card-text {
+    font-size: large;
+}
+
+/* INDEX */
 .logo-banner-div {
     width: 90%;
     text-align: center;
@@ -28,7 +69,6 @@ colors:
 }
 
 .logo-banner-div h4 {
-    color: #00A8BB;
     user-select: none;
 }
 
@@ -59,24 +99,27 @@ colors:
     left: 16px;
 }
 
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-}
-
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-}
-
 .album {
     background-color: #EBFDFF;
 }
 
-footer p {
-    color: #F25C54;
+/* REEFLECTIONS */
+.div-blog-post button {
+    background-color: #00A8BB;
+    border: none;
+}
+
+.div-blog-post button:hover {
+    background-color: #167689;
+    border: none;
+}
+
+.hrule-blog-post {
+    width: 15%;
+    text-align: center;
+    margin: auto;
+}
+
+.hrule-blog-post img {
+    min-width: 90px;
 }
