@@ -23,8 +23,13 @@ colors:
     margin: auto;
 }
 
+.logo-banner-div img {
+    pointer-events: none;
+}
+
 .logo-banner-div h4 {
     color: #00A8BB;
+    user-select: none;
 }
 
 .fa-at {
