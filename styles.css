@@ -123,3 +123,14 @@ colors:
 .hrule-blog-post img {
     min-width: 90px;
 }
+
+/* GAMES */
+.container-game {
+    border: 1px solid grey;
+    margin-top: 50px;
+    height: 500px;
+}
+
+#div-games-category {
+    background-color: yellow;
+}
