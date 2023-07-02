@@ -1,8 +1,8 @@
 var categories = ["int", "float", "str", "char"]
-var question_count = 10
+var question_count = 12
 
 var questions = format_questions(create_rand_questions(question_count, categories))
-create_question_divs(questions)
+create_divs(questions, categories)
 
 function create_rand_questions(cnt, categ) {
     var random_questions = []
@@ -51,7 +51,11 @@ function create_rand_questions(cnt, categ) {
                 question = "N/A"
         }
 
-        random_questions.push([question, rand_categ])
+        if (random_questions.some(q => JSON.stringify(q) === JSON.stringify([question, rand_categ]))) {
+            i = i - 1  // do not push duplicates
+        } else {
+            random_questions.push([question, rand_categ])
+        }
     }
     
     return random_questions
@@ -74,12 +78,114 @@ function format_questions(quests) {
     return quests
 }
 
+function create_divs(quests, categories) {
+    create_answer_divs(categories)
+    create_question_divs(quests)
+}
+
+function create_answer_divs(categs) {
+    var container = document.getElementById('div-games-category')
+    container.style.position = 'relative'
+
+    var gridDiv = document.createElement('div')
+    gridDiv.style.height = '25%'
+    gridDiv.style.width = '75%'
+    gridDiv.style.position = 'absolute'
+    gridDiv.style.left = '50%'
+    gridDiv.style.top = '5%'
+    gridDiv.style.transform = 'translateX(-50%)'
+
+    var gridContainer = document.createElement('div')
+    gridContainer.style.display = 'flex'
+    gridContainer.style.justifyContent = 'space-between'
+    gridContainer.style.alignItems = 'flex-start'
+    gridContainer.style.height = '100%'
+    gridContainer.style.padding = '0 5%'
+
+    gridDiv.appendChild(gridContainer)
+    container.appendChild(gridDiv)
+
+    var divWidthPercentage = (75 - (categs.length - 1) * 2) / categs.length
+
+    for (var i = 0; i < categs.length; i++) {
+        var new_div = document.createElement('div')
+        new_div.id = 'div-answer' + i
+        new_div.className = 'div-answer'
+        new_div.textContent = categs[i]
+        new_div.style.width = divWidthPercentage + '%'
+        new_div.addEventListener('dragover', allowDrop)
+        new_div.addEventListener('drop', drop)
+
+        gridContainer.appendChild(new_div)
+    }
+}
+
 function create_question_divs(quests) {
+    var container = document.getElementById('div-games-category')
+    container.style.position = 'relative'
+
+    var gridDiv = document.createElement('div')
+    gridDiv.style.height = '33%'
+    gridDiv.style.width = '75%'
+    gridDiv.style.position = 'absolute'
+    gridDiv.style.left = '50%'
+    gridDiv.style.bottom = '0'
+    gridDiv.style.transform = 'translate(-50%, 0)'
+
+    var gridContainer = document.createElement('div')
+    gridContainer.style.display = 'grid'
+    gridContainer.style.gridTemplateColumns = 'repeat(6, 1fr)'
+    gridContainer.style.justifyContent = 'space-between'
+    gridContainer.style.justifyItems = 'center'
+    gridContainer.style.alignItems = 'end'
+    gridContainer.style.gridGap = '10px'
+
+    gridDiv.appendChild(gridContainer)
+    container.appendChild(gridDiv)
+
     for (var i = 0; i < quests.length; i++) {
         var new_div = document.createElement('div')
         new_div.id = 'div-question' + i
         new_div.className = 'div-question'
+        new_div.textContent = quests[i][0]
+        new_div.draggable = true
+        new_div.addEventListener('dragstart', drag)
 
-        document.getElementById('div-games-category').appendChild(new_div);
+        gridContainer.appendChild(new_div)
     }
 }
+
+function allowDrop(event) {
+    event.preventDefault()
+}
+
+function drag(event) {
+    event.dataTransfer.setData('text', event.target.id)
+}
+
+function drop(event) {
+    event.preventDefault()
+    var data = event.dataTransfer.getData('text')
+    var questionDiv = document.getElementById(data)
+    var answerDiv = event.target
+    var newText = questionDiv.textContent
+
+    var newLine = document.createElement('br')
+    var existingText = answerDiv.textContent
+
+    if (existingText) {
+        answerDiv.innerHTML += '<br>' + newText
+    } else {
+        answerDiv.appendChild(newLine)
+        answerDiv.appendChild(document.createTextNode(newText))
+    }
+
+    questionDiv.parentNode.removeChild(questionDiv)
+}
+
+
+
+
+
+
+
