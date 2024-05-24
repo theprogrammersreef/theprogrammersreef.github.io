@@ -57,7 +57,11 @@ colors:
     font-size: large;
 }
 
-/* INDEX */
+.fa-at {
+    padding-left: 1.5px;
+    padding-right: 1.5px;
+}
+
 .logo-banner-div {
     width: 90%;
     text-align: center;
@@ -72,11 +76,7 @@ colors:
     user-select: none;
 }
 
-.fa-at {
-    padding-left: 1.5px;
-    padding-right: 1.5px;
-}
-
+/* INDEX */
 .search {
     position: relative;
     box-shadow: 0 0 40px rgba(51, 51, 51, .1);
@@ -103,46 +103,34 @@ colors:
     background-color: #EBFDFF;
 }
 
-/* REEFLECTIONS */
-.div-blog-post button {
-    background-color: #00A8BB;
-    border: none;
-}
-
-.div-blog-post button:hover {
-    background-color: #167689;
-    border: none;
-}
-
-.hrule-blog-post {
-    width: 15%;
-    text-align: center;
-    margin: auto;
-}
-
-.hrule-blog-post img {
-    min-width: 90px;
-}
-
-/* GAMES */
-.container-game {
-    border: 1px solid grey;
-    margin-top: 50px;
-    height: 500px;
-}
-
-.div-answer {
+/* MEET THE CREW */
+.crew-container {
     background-color: white;
-    color: grey;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+    border-radius: 50px;
+    padding-top: 0;
 }
 
-.div-question {
-    background-color: white;
-    color: grey;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.crew-container-first {
+    margin-top: 30px;
+}
+
+.crew-img {
+    max-height: 350px;
+    width: auto;
+}
+
+.crew-img-div {
+    justify-content: center; 
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.crew-text-div {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    padding-left: 0;
+    padding-top: 0;
+    margin-top: 0;
 }
